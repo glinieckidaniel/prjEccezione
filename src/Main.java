@@ -5,16 +5,53 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws MessaggioTroppoLungoException {
 
-        try{
-            System.out.println(MessaggioTroppoLungoException.frase());
-        }catch(MessaggioTroppoLungoException e){
-            System.err.println(e.getMessage());
+        Scanner s2 = new Scanner(System.in);
+        boolean b = false;
 
-        }finally{
-            System.out.println("\nCodice eseguito");
+
+        while(!b) {
+            try {
+                System.out.println(frase());
+            } catch (MessaggioTroppoLungoException e) {
+                System.err.println(e.getMessage());
+
+            } finally {
+                int i = 0;
+                System.out.println("\nVuoi continuare\n1-Si\n2-No");
+                i = s2.nextInt();
+
+                if(i != 1){
+                    b = true;
+                }
+
+
+            }
         }
-        System.out.println("\ncontinua");
+
+
+
+
 
     }
+
+
+    public static String frase() throws MessaggioTroppoLungoException{
+        String fr;
+        Scanner s1 = new Scanner(System.in);
+        System.out.println("Inserisci una stringa di 20 caratteri : ");
+        fr = s1.nextLine();
+        if(fr.length() > 20){
+            throw new MessaggioTroppoLungoException("Stringa troppo lunga");
+        }else{
+            System.out.println("Hai inserito : " + fr);
+        }
+
+
+        return fr;
+    }
+
+
+
+
 
 }
