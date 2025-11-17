@@ -6,8 +6,14 @@ public class Main {
     public static void main(String[] args) throws MessaggioTroppoLungoException {
 
         try{
-            System.out.println(frase());
-        }catch()
+            System.out.println(MessaggioTroppoLungoException.frase());
+        }catch(MessaggioTroppoLungoException e){
+            System.err.println(e.getMessage());
+
+        }finally{
+            System.out.println("\nCodice eseguito");
+        }
+        System.out.println("\ncontinua");
 
     }
 
